@@ -1,0 +1,15 @@
+<div class="row" *ngIf="user">
+	<div class="col-md-10 offset-1">
+		<div class="card text-center">
+			<div class="card-header">
+				{{ user.id }}
+			</div>
+			<div class="card-block">
+				<h4 class="card-title"> Nombre: {{user.name}}</h4>
+				<p class="card-text"> Email: {{user.email}}</p>
+				<p class="card-text"> Telefono: {{user.phone}}</p>
+			</div>
+		</div>
+		<a routerLink="/crud" class="btn btn-primary btn-xs"> Volver al listado</a>
+	</div>
+</div>

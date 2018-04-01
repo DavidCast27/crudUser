@@ -1,0 +1,28 @@
+<div class ="col-md-12">
+	<a routerLink="/users/add" class="btn btn-xs float-right btn-warning">Añadir usuarios</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>ACTIONS</th>
+			</tr>
+		</thead>
+		<tbody *ngIf="users">
+			<tr *ngFor="let user of users">
+				<td>{{user.id}}</td>
+				<td>{{user.name}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.phone}}</td>
+				<td>
+					<a [routerLink]="['/users', user.id, 'detail']" class="btn btn-xs btn-info">Detalle</a>
+					<a [routerLink]="['/users', user.id, 'edit']" class="btn btn-xs btn-primary">Editar</a>
+					<button (click) = "remove(user)" class="btn btn-xs btn-danger" >Eliminar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row" >
+		<div class="col-md-12 offset-1">
+			<h1 class="center">{{h1Text}}</h1>
+
+			<form novalidate (ngSubmit) ="submit()" [formGroup]="userForm" >
+
+				<div class="form-group">
+					<label for="name">Nombre</label>
+					<input formControlName="name" placeholder="Nombre" class="form-control">
+<!-- 					<div [hidden]="name.valid || name.pristine" style="color:firebrick">
+						El nombre es requerido
+					</div> -->
+				</div>
+
+
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input formControlName="email" placeholder="Email" class="form-control" >
+					<!-- <div [hidden]="email.valid || email.pristine" style="color:firebrick">
+						El email es requerido
+					</div> -->
+				</div>
+
+				<div class="form-group">
+					<label for="phone">Telefono</label>
+					<input formControlName="phone" placeholder="Telefono" class="form-control">
+					<!-- <div [hidden]="phone.valid || phone.pristine" style="color:firebrick">
+						El Telefono es requerido
+					</div> -->
+				</div>
+
+				<button class="btn btn-primary" type="submit" [disabled]="!userForm"> {{submitText}} </button>
+				<a routerLink="/crud" class="btn btn-primary btn-xs"> Volver al listado</a>
+
+			</form>
+
+		</div>
+	</div>
+</div>
