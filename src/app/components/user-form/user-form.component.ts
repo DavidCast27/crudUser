@@ -32,6 +32,7 @@ export class UserFormComponent implements OnInit{
 			name: ['', Validators.required],
 			email: ['', [Validators.required, Validators.email]],
 			phone: '',
+			photoName: 'asasa.jpg'
 		});
 	}
 

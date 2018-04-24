@@ -5,7 +5,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import { User } from '../../user';
 
-const cudOptions = {
+const crudOptions = {
 	headers : new HttpHeaders({'Content-Type': 'multipart/form-data','responseType': "blob"})
 }
 
@@ -18,7 +18,7 @@ export class ImageService {
 
 	getImage(id:string | number): Observable<File>{
 		const url = `${this.imageUrl}?image=${id}`;
-		return this.http.get<any>(url, cudOptions)
+		return this.http.get<any>(url, crudOptions)
 		.catch(this.handleError);
 	}
 

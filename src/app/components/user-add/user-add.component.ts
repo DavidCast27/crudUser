@@ -17,7 +17,7 @@ export class UserAddComponent {
 		) { }
 
 	save(user:User){
-		this.usersServices.addUser(user).subscribe(()=>{
+		this.usersServices.addUser(user).subscribe((res)=>{
 			this.router.navigate(['/crud']);
 		})
 	}
