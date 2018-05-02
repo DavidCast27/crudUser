@@ -12,6 +12,8 @@ import { User } from '../../user'
 export class UserDetailComponent implements OnInit {
 
 	public user:User;
+	public image;
+	private isImageLoading;
 	constructor(
 		private route:ActivatedRoute,
 		private usersServices:UserService,
@@ -27,8 +29,9 @@ export class UserDetailComponent implements OnInit {
 	}
 
 	getImage(photoName){
-		this.imageService.getImage(photoName).subscribe(image=>{
-			console.log(image);
+		this.imageService.getImage(photoName).subscribe(data=>{
+			console.log(data);
+			this.image = data;
 		})
 	}
 

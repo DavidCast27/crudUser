@@ -13,13 +13,14 @@ export class UserFormComponent implements OnInit{
 	@Input() submitText: string;
 	@Input() user:User;
 	@Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
+	fileToUpload: File;
+
 
 	userForm: FormGroup;
 
 	constructor(public fb: FormBuilder) { 
 		
 	}
-
 
 	ngOnInit(){
 		this.initForm();
@@ -32,17 +33,27 @@ export class UserFormComponent implements OnInit{
 			name: ['', Validators.required],
 			email: ['', [Validators.required, Validators.email]],
 			phone: '',
-			photoName: 'asasa.jpg'
+			photoName: '',
+			fileToUpload: ''
 		});
 	}
 
 	submit(){
 		if(this.userForm.valid){
-			this.onSubmit.emit(this.userForm.value);	
+			this.onSubmit.emit(this.userForm.value);
 		}else{
 			alert("Verifique la informacion")
 		}
 		
+	}
+
+	onFileChange(event) {
+		if(event.target.files && event.target.files.length > 0) {
+			this.fileToUpload = event.target.files[0];
+			this.userForm.patchValue({
+				fileToUpload: this.fileToUpload,
+			});
+		}
 	}
 
 }

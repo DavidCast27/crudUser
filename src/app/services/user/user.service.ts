@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import {Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { catchError} from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { User } from '../../user';
-
-const crudOptions = {
-    headers : new HttpHeaders
-    ({
-        'Content-Type':  'application/json',
-        //'Access-Control-Allow-Origin': '*',
-    })
-}
 
 @Injectable()
 export class UserService {
 
     private userUrl : string = 'http://cruduser.us-east-2.elasticbeanstalk.com/user'
+    private crudOptions = {
+        headers : new HttpHeaders({
+            'Content-Type':  'application/json',
+        })
+    };
+    
     constructor(private http: HttpClient) { }
 
     getUsers(): Observable<User[]>{
@@ -31,21 +29,19 @@ export class UserService {
     }
 
     addUser(user:User):Observable<User>{
-        console.log(user);
-        console.log(crudOptions.headers)
-        return this.http.post<User>(this.userUrl,user,crudOptions)
+        return this.http.post<User>(this.userUrl,user,this.crudOptions)
         .pipe(catchError(this.handleError));
     }
 
     deleteUser(user:User | number):Observable<User>{
         const id = typeof user == 'number'? user: user.id;
         const url = `${this.userUrl}/${id}`;
-        return this.http.delete<any>(url,crudOptions)
+        return this.http.delete<any>(url,this.crudOptions)
         .pipe(catchError(this.handleError));
     }
 
     updateUser(user:User): Observable<User>{
-        return this.http.put(this.userUrl,user,crudOptions)
+        return this.http.put(this.userUrl,user,this.crudOptions)
         .pipe(catchError(this.handleError));
     }
 

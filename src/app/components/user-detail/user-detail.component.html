@@ -4,12 +4,23 @@
 			<div class="card-header">
 				{{ user.id }}
 			</div>
-			<div class="card-block">
-				<h4 class="card-title"> Nombre: {{user.name}}</h4>
-				<p class="card-text"> Email: {{user.email}}</p>
-				<p class="card-text"> Telefono: {{user.phone}}</p>
+			<div class="row">
+				<div class="col-sm" *ngIf="image">
+					<div class="card-block">
+						<img width="200" height="200" [src]="image">
+					</div>	
+				</div>
+				<div class="col-sm">
+					<div class="card-block ">
+						<h4 class="card-title "> Nombre: {{user.name}}</h4>
+						<p class="card-text"> Email: {{user.email}}</p>
+						<p class="card-text"> Telefono: {{user.phone}}</p>
+						<p class="card-text"> Telefono: {{user.photoName}}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<a routerLink="/crud" class="btn btn-primary btn-xs"> Volver al listado</a>
 	</div>
+
 </div>
